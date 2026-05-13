@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>X Clone</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Auth screen -->
+  <div id="authScreen" class="auth-screen">
+    <div class="auth-card">
+      <div class="logo">𝕏</div>
+      <h1>今すぐ参加しよう</h1>
+
+      <div class="tab-bar">
+        <button class="tab active" id="tabLogin" onclick="showTab('login')">ログイン</button>
+        <button class="tab" id="tabSignup" onclick="showTab('signup')">新規登録</button>
+      </div>
+
+      <form id="authForm">
+        <input type="email" id="email" placeholder="メールアドレス" required autocomplete="email">
+        <input type="password" id="password" placeholder="パスワード（6文字以上）" required autocomplete="current-password" minlength="6">
+        <div id="authError" class="error-msg hidden"></div>
+        <button type="submit" id="authBtn" class="btn-primary">ログイン</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main app -->
+  <div id="app" class="hidden">
+    <header class="header">
+      <div class="header-inner">
+        <span class="logo-sm">𝕏</span>
+        <div class="header-right">
+          <span id="headerEmail" class="header-email"></span>
+          <button onclick="logout()" class="btn-logout">ログアウト</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="composer">
+        <div class="avatar">𝕏</div>
+        <div class="composer-right">
+          <textarea id="postContent" placeholder="いま何してる？" maxlength="280" rows="3"></textarea>
+          <div class="composer-footer">
+            <span id="charCount" class="char-count">280</span>
+            <button id="postBtn" onclick="submitPost()" class="btn-primary btn-post">投稿する</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div id="feed" class="feed">
+        <p class="loading-msg">読み込み中...</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
